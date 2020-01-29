@@ -1,0 +1,3 @@
+environments/dev-local/grafana/tfstate/*.tfstate.*
+environments/dev-local/grafana/tfstate/*.tfstate
+*/**/.terraform
