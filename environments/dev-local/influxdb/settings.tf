@@ -4,7 +4,7 @@
 terraform {
   backend "local" {
   }
-#    required_providers {
-#    influxdb = 1
-#  }
+  required_providers {
+    influxdb = ">= 1.3"
+  }
 }

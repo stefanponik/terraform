@@ -1,4 +1,6 @@
-
+#
+# Provider
+#
 provider "grafana" {
   url  = var.grf_url
   auth = var.grf_auth
