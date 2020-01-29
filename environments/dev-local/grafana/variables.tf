@@ -5,6 +5,7 @@ variable "grf_url" {
 
 variable "grf_auth" {
   #  default = "eyJrIjoic25uOFpHVWVoaTJCM0hhN1BiNzBpUEhseEVINmhiWjAiLCJuIjoiYWRtaW4iLCJpZCI6MX0="
+  default = eyJrIjoieEpGVmViTHh3YjZDTFlZNjV6dHRiRjNaMU1rUUdhWkkiLCJuIjoiYWRtaW4iLCJpZCI6MX0=
 }
 
 variable "idb_url" {
