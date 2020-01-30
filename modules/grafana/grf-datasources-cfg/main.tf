@@ -7,6 +7,11 @@ provider "grafana" {
   auth = var.grf_auth
 }
 
+
+###########
+# Resources
+###########
+
 resource "grafana_data_source" "idb" {
   type          = "influxdb"
   name          = "influxdb-internal"
