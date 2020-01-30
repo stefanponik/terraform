@@ -1,11 +1,15 @@
 ###########
 # Variables
 ###########
+
 variable "grf_url" {
+  type = string
 }
+
 variable "grf_auth" {
+  type = string
 }
+
 variable "idb_url" {
-}
-variable "grf-idb-datasources" {
+  type = string
 }

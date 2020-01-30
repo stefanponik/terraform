@@ -1,32 +1,12 @@
-#
-# Provider
-#
-provider "grafana" {
-  url  = var.grf_url
-  auth = var.grf_auth
+#########
+# Modules 
+#########
+
+module "grf-datasources-cfg" {
+  source = "../../../modules/grafana/grf-datasources-cfg"
+
+  idb_url  = var.idb_url
+  grf_url  = var.grf_url
+  grf_auth = var.grf_auth
+
 }
-
-# resource "grafana_data_source" "idb" {
-#   type = "influxdb"
-# 
-#   for_each = var.grf-idb-datasources.default
-# 
-#   url = var.idb_url
-# }
-
-resource "grafana_data_source" "idb" {
-  type          = "influxdb"
-  name          = "influxdb-internal"
-  url           = var.idb_url
-  database_name = "_internal"
-}
-# 
-# resource "grafana_data_source" "idb-2" {
-#   type          = "influxdb"
-#   name          = "influxdb-metricstore"
-#   is_default    = true
-#   url           = var.idb_url
-#   database_name = "MetricStore"
-# }
-
-
