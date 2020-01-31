@@ -1,35 +1,39 @@
 #########
 # Modules
 #########
-variable "policy_list" {
-  default = {
-    db_name = "testdb3"
-    db_policies = [
-      {
-        name     = "test1"
-        duration = "2w"
-        default  = true
-      },
-      {
-        name     = "test2"
-        duration = "4w"
-        default  = false
-      },
-    ]
-    db_name = "testdb4"
-    db_policies = [
-      {
-        name     = "test1"
-        duration = "2w"
-        default  = true
-      },
-      {
-        name     = "test2"
-        duration = "4w"
-        default  = false
-      },
-    ]
-  }
+variable "database_schema" {
+  default = [
+    {
+      db_name = "testdb3"
+      db_policies = [
+        {
+          name     = "test1"
+          duration = "2w"
+          default  = true
+        },
+        {
+          name     = "test2"
+          duration = "4w"
+          default  = false
+        },
+      ]
+    },
+    {
+      db_name = "testdb4"
+      db_policies = [
+        {
+          name     = "test1"
+          duration = "2w"
+          default  = true
+        },
+        {
+          name     = "test2"
+          duration = "4w"
+          default  = false
+        },
+      ]
+    },
+  ]
 }
 
 
