@@ -59,5 +59,5 @@ provider "restapi" {
 resource "restapi_object" "api-elk-dev" {
   path = "/api/datasources"
   #  update_path = "/api/datasources/10"
-  data = "{\"name\":\"elk-dev\", \"type\":\"elasticsearch\", \"access\":\"proxy\", \"url\":\"http://172.17.4.145:9200\" \"database\":\"logstash*\", \"jsonData\":{ \"esVersion\": 60, \"maxConcurrentShardRequests\":\"3\", \"timeField\":\"@timestamp\", \"timeInterval\":\"60s\" } }"
+  data = "{\"name\":\"elk-dev\",\"type\":\"elasticsearch\",\"access\":\"proxy\",\"url\":\"http:\\/\\/172.17.4.145:9200\",\"database\":\"logstash*\",\"jsonData\":{\"esVersion\":60,\"maxConcurrentShardRequests\":\"3\",\"timeField\":\"@timestamp\",\"timeInterval\":\"60s\"}}"
 }
