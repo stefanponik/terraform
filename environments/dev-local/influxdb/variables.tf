@@ -6,9 +6,14 @@ variable "idb_url" {
   type = string
 }
 
-variable "idb_datasources" {
+variable "database_schema" {
   type = list(object({
-    name          = string
-    database_name = list(object({}))
+    db_name = string
+    db_policies = list(object(
+      {
+        name     = string
+        duration = string
+        default  = bool
+    }))
   }))
 }
