@@ -21,6 +21,12 @@ locals {
   grf_elk_provider       = "elasticsearch"
   idb_datasource_counter = length(var.idb_datasources)
   elk_datasource_counter = length(var.elk_datasources)
+  elk_defaults = {
+    type   = local.grf_elk_provider,
+    access = "proxy",
+    url    = var.elk_url,
+  }
+
 }
 
 resource "grafana_data_source" "idb" {
@@ -57,10 +63,10 @@ provider "restapi" {
 #}
 
 resource "restapi_object" "api-elk-dev" {
-  #  count = local.elk_datasource_counter
-  path = "/api/datasources"
+  count = local.elk_datasource_counter
+  path  = "/api/datasources"
   #  update_path = "/api/datasources/10"
-  data = jsonencode(var.elk_test)
+  data = jsonencode(merge(var.elk_datasources[count.index], local.elk_defaults))
 }
 
 #   data = "{\"name\":\"${lookup(element(var.elk_datasources, count.index), "name")}\",\"type\":\"${local.grf_elk_provider}\",\"access\":\"proxy\",\"url\":\"http:\\/\\/172.17.4.145:9200\",\"database\":\"logstash*\",\"jsonData\":{\"esVersion\":60,\"maxConcurrentShardRequests\":\"3\",\"timeField\":\"@timestamp\",\"timeInterval\":\"60s\"}}"

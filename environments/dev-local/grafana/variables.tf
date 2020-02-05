@@ -14,9 +14,6 @@ variable "idb_url" {
 variable "elk_url" {
 }
 
-variable "elk_test" {
-}
-
 variable "idb_datasources" {
   type = list(object({
     name          = string
@@ -26,9 +23,5 @@ variable "idb_datasources" {
 }
 
 variable "elk_datasources" {
-  type = list(object({
-    name          = string
-    is_default    = bool
-    database_name = string
-  }))
+  type = list(any)
 }
