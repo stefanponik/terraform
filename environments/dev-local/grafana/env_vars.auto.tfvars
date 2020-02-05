@@ -26,22 +26,13 @@ elk_url = "http://172.17.4.145:9200"
 
 elk_datasources = [
   {
-    name          = "elk-dev"
-    database_name = "logstash*"
-    is_default    = false
+    name     = "elk-dev",
+    database = "logstash*",
+    jsonData = {
+      esVersion                  = 60,
+      maxConcurrentShardRequests = "3",
+      timeField                  = "@timestamp",
+      timeInterval               = "60s"
+    },
   },
 ]
-
-elk_test = {
-  name     = "elk-dev",
-  type     = "elasticsearch",
-  access   = "proxy",
-  url      = "http://172.17.4.145:9200",
-  database = "logstash*",
-  jsonData = {
-    esVersion                  = 60,
-    maxConcurrentShardRequests = "3",
-    timeField                  = "@timestamp",
-    timeInterval               = "60s"
-  },
-}
