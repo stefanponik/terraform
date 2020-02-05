@@ -14,6 +14,9 @@ variable "idb_url" {
 variable "elk_url" {
 }
 
+variable "elk_test" {
+}
+
 variable "idb_datasources" {
   type = list(object({
     name          = string

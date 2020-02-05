@@ -57,7 +57,10 @@ provider "restapi" {
 #}
 
 resource "restapi_object" "api-elk-dev" {
+  #  count = local.elk_datasource_counter
   path = "/api/datasources"
   #  update_path = "/api/datasources/10"
-  data = "{\"name\":\"elk-dev\",\"type\":\"elasticsearch\",\"access\":\"proxy\",\"url\":\"http:\\/\\/172.17.4.145:9200\",\"database\":\"logstash*\",\"jsonData\":{\"esVersion\":60,\"maxConcurrentShardRequests\":\"3\",\"timeField\":\"@timestamp\",\"timeInterval\":\"60s\"}}"
+  data = jsonencode(var.elk_test)
 }
+
+#   data = "{\"name\":\"${lookup(element(var.elk_datasources, count.index), "name")}\",\"type\":\"${local.grf_elk_provider}\",\"access\":\"proxy\",\"url\":\"http:\\/\\/172.17.4.145:9200\",\"database\":\"logstash*\",\"jsonData\":{\"esVersion\":60,\"maxConcurrentShardRequests\":\"3\",\"timeField\":\"@timestamp\",\"timeInterval\":\"60s\"}}"
