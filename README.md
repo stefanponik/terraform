@@ -5,5 +5,5 @@ All is developed and tested on MAC but should be working on Windows and Linux to
 
 ## License
 
-The Unlicense
+MIT
 
