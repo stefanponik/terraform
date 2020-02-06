@@ -1,6 +1,10 @@
 # terraform
-Following repository is targeted to work with Docker repository
+Following repository is targeted fully to do RND and developing / testing initial concepts
 
-It configures grafana docker container running on local docker instance. 
 
-All is tested on MAC but should be operating system agnostic.
+All is developed and tested on MAC but should be working on Windows and Linux too. 
+
+## License
+
+MIT / BSD
+
