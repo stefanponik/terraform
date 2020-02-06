@@ -67,4 +67,4 @@ By default its using "monitor" policy name and settings are in above example.
 MIT / BSD
 
 # Author Information
-Created January 2020 by Stefan Ponik
+Created on January 2020 by Stefan Ponik
