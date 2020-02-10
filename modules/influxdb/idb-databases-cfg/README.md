@@ -1,6 +1,7 @@
+
 # InfluxDB Terraform Module
 
-Module provide programmatic and state aware way to manage InfluxDB databases and policies. 
+Module provide programmatic and state aware way to manage InfluxDB databases and policies for InfluxDB OSS running on any platform
 
 # Terraform Requirements 
 
@@ -61,6 +62,9 @@ By default its using "monitor" policy name and settings are in above example.
 - Then you can mod duration or other attributes as desired and run terraform apply that will modify it correctly. 
 - InfluxDB provider handles it in that way correctly. 
 - InfluxDB provider does not provide import existing databases to terraform state file. 
+
+# Future Work 
+- Extend role to support all 
 
 ## License
 
