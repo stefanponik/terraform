@@ -3,15 +3,15 @@
 ###############
 
 variable "grf_url" {
-}
-
-variable "grf_auth" {
+  type = string
 }
 
 variable "idb_url" {
+  type = string
 }
 
 variable "elk_url" {
+  type = string
 }
 
 variable "idb_datasources" {
