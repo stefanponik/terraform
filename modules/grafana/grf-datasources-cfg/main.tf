@@ -4,13 +4,13 @@
 
 provider "grafana" {
   url  = var.grf_url
-  auth = var.grf_auth
+  auth = "${var.grf_user}:${var.grf_password}"
 }
 
 provider "restapi" {
   uri                  = var.grf_url
-  username             = "admin"
-  password             = "Password1"
+  username             = var.grf_user
+  password             = var.grf_password
   write_returns_object = true
 }
 

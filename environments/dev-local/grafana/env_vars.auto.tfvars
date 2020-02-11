@@ -3,8 +3,10 @@
 ###############
 
 
-grf_url  = "http://172.17.4.20:3000"
-grf_auth = "admin:Password1"
+grf_url = "http://172.17.4.20:3000"
+
+#grf_user     = "admin"
+#grf_password = "Password1"
 
 # Datasources URLs and Databases for  
 idb_url = "http://influxdb-dev-local:8086"
