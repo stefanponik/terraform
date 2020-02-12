@@ -23,11 +23,11 @@ database_schema = [
         duration = "52w"
         default  = true
       },
-      {
-        name     = "dev-test-01"
-        duration = "52w"
-        default  = false
-      },
+      #      {
+      #        name     = "dev-test-01"
+      #        duration = "52w"
+      #        default  = false
+      #      },
     ]
   },
 ]
