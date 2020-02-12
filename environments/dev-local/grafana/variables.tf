@@ -21,7 +21,6 @@ variable "grf_api_key" {
   default = ""
 }
 
-
 variable "idb_url" {
   type = string
 }
