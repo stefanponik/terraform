@@ -4,6 +4,9 @@
 
 idb_url = "http://localhost:8086"
 
+# idb_username = "admin"
+# idb_password = "Password1"
+
 database_schema = [
   {
     db_name = "_internal"
