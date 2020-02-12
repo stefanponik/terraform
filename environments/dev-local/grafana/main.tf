@@ -25,3 +25,35 @@ resource "grafana_folder" "folder_collection" {
   title = element(var.grf_folders, count.index)
 }
 
+
+
+# output "all_grafana_folders_info" {
+#   value = grafana_folder.folder_collection
+# }
+
+
+locals {
+  folder_name = "Monitoring-Infra"
+
+  all_grafana_folders_info = [
+    {
+      "id"    = "9"
+      "title" = "Docker-Infra"
+      "uid"   = "_qvbze8Zk"
+    },
+    {
+      "id"    = "8"
+      "title" = "Monitoring-Infra"
+      "uid"   = "_qDxke8Zzz"
+    },
+  ]
+}
+
+resource "grafana_dashboard" "dashboard_in_folder" {
+  folder      = "9"
+  config_json = file("./dashboards/Docker overview-eport-external-sharing.json")
+}
+
+#replace(file("./dashboards/Docker overview-eport-external-sharing-1.json"), "+", "influxdb-metricstore")
+# Python and GO regex but not working as terraform using its own regex. 
+# "(?:\\\${)?DS_[A-Z0-9_-]+(?:})"
