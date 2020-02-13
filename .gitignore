@@ -1,5 +1,4 @@
-environments/dev-local/grafana/tfstate/*.tfstate.*
-environments/dev-local/grafana/tfstate/*.tfstate
 */**/.terraform
 */**/*.tfstate
 */**/*.tfstate.backup
+*/**/*.terraform.tfstate.lock.info
