@@ -26,7 +26,7 @@ provider "influxdb" {
 #This is purly to speed up development. 
 #Clone actual module to the following folder called modules
 module "grf-datasources-cfg" {
-  source = "../../../modules/terraform-influxdb-databases-cfg"
+  source = "../../../../modules/terraform-influxdb-databases-cfg"
   providers = {
     influxdb = influxdb
   }
