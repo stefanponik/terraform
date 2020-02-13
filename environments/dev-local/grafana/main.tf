@@ -25,35 +25,46 @@ resource "grafana_folder" "folder_collection" {
   title = element(var.grf_folders, count.index)
 }
 
+output "all_grafana_folders_info" {
+  value = grafana_folder.folder_collection
+}
 
-
-# output "all_grafana_folders_info" {
-#   value = grafana_folder.folder_collection
-# }
-
+output "deployed_grafana_folders" {
+  value = grafana_folder.folder_collection.*.title
+}
 
 locals {
-  folder_name = "Monitoring-Infra"
-
-  all_grafana_folders_info = [
+  folder_name            = "Monitoring-Infra"
+  grf_dashboards_counter = length(var.grf_dashboards)
+  grf_dashboards = [
     {
-      "id"    = "9"
-      "title" = "Docker-Infra"
-      "uid"   = "_qvbze8Zk"
+      grf_folder_name = "Docker-Infra"
+      grf_folder_dashboards = [
+        "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2",
+        "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json",
+      ]
     },
     {
-      "id"    = "8"
-      "title" = "Monitoring-Infra"
-      "uid"   = "_qDxke8Zzz"
+      grf_folder_name = "Docker-Infra"
+      grf_folder_dashboards = [
+        "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2",
+        "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json",
+      ]
     },
   ]
 }
 
 resource "grafana_dashboard" "dashboard_in_folder" {
-  folder      = "9"
-  config_json = file("./dashboards/Docker overview-eport-external-sharing.json")
+  # for_each = [ for x in   ]
+
+
+  folder      = element([for x in grafana_folder.folder_collection : x.id if x.title == local.folder_name], 0)
+  config_json = file("../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json")
+
 }
 
 #replace(file("./dashboards/Docker overview-eport-external-sharing-1.json"), "+", "influxdb-metricstore")
 # Python and GO regex but not working as terraform using its own regex. 
 # "(?:\\\${)?DS_[A-Z0-9_-]+(?:})"
+
+# [for x in local.all_grafana_folders_info: x.id if x.title == local.folder_name ]
