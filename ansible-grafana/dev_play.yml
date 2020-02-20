@@ -1,0 +1,37 @@
+---
+
+- name: Ansible Terraform Wrapper
+  hosts: localhost
+  vars_files: 
+   - ./env_vars.yml
+  tasks: 
+  - debug: 
+      var: grafana_folders
+
+  - debug: 
+      var: grafana_dashboards.Docker_Infra
+
+  - name: Get Terraform Module RestAPI MAC
+    get_url: 
+      url: https://github.com/Mastercard/terraform-provider-restapi/releases/download/v1.11.0/terraform-provider-restapi_v1.11.0-darwin-amd64
+      dest: ~/.terraform.d/plugins/terraform-provider-restapi_v1.11.0
+    when: ansible_distribution == "MacOSX"
+
+  - name: Get Terraform Module RestAPI UBUNTU
+    get_url: 
+      url: https://github.com/Mastercard/terraform-provider-restapi/releases/download/v1.11.0/terraform-provider-restapi_v1.11.0-linux-amd64
+      dest: ~/.terraform.d/plugins/terraform-provider-restapi_v1.11.0
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Generate Terraform Grafana VARs 
+    template: 
+      src: terraform_vars.j2
+     # dest: ../../terraform/environments/dev-local/grafana/grafana_fd.auto.tfvars
+      dest: ./grafana_fd.auto.tfvars
+    vars: 
+      folders: "{{ grafana_folders }}"
+      dashboards: "{{ grafana_dashboards }}"
+    delegate_to: localhost
+
+
+
