@@ -43,23 +43,15 @@ elk_datasources = [
 
 grf_folders = [
   "Docker-Infra",
-  "Monitoring-Infra"
+  "Monitoring-Infra",
 ]
-
 
 grf_dashboards = [
-  {
-    grf_folder_name = "Docker-Infra"
-    grf_folder_dashboards = [
-      "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json",
-      "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2",
-    ]
-  },
-  {
-    grf_folder_name = "Docker-Infra"
-    grf_folder_dashboards = [
-      "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json",
-      "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2",
-    ]
-  },
+  { Docker-Infra = "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json" },
+  { Docker-Infra = "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2.json" },
+  { Monitoring-Infra = "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json" },
+  { Monitoring-Infra = "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2.json" },
 ]
+
+
+
