@@ -36,30 +36,14 @@ output "deployed_grafana_folders" {
 locals {
   folder_name            = "Monitoring-Infra"
   grf_dashboards_counter = length(var.grf_dashboards)
-  grf_dashboards = [
-    {
-      grf_folder_name = "Docker-Infra"
-      grf_folder_dashboards = [
-        "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2",
-        "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json",
-      ]
-    },
-    {
-      grf_folder_name = "Docker-Infra"
-      grf_folder_dashboards = [
-        "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2",
-        "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json",
-      ]
-    },
-  ]
 }
 
 resource "grafana_dashboard" "dashboard_in_folder" {
-  # for_each = [ for x in   ]
 
+  count = local.grf_dashboards_counter
 
-  folder      = element([for x in grafana_folder.folder_collection : x.id if x.title == local.folder_name], 0)
-  config_json = file("../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json")
+  folder      = element([for x in grafana_folder.folder_collection : x.id if x.title == keys(element(var.grf_dashboards, count.index))[0]], 0)
+  config_json = file(values(element(var.grf_dashboards, count.index))[0])
 
 }
 
