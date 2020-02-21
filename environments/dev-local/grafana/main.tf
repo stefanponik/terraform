@@ -19,36 +19,13 @@ provider "grafana" {
   auth = var.grf_api_key != "" ? var.grf_api_key : "${var.grf_user}:${var.grf_password}"
 }
 
-resource "grafana_folder" "folder_collection" {
-  count = length(var.grf_folders)
+module "terraform-grafana-cfg" {
+  source = "../../../../terraform-grafana-cfg"
 
-  title = element(var.grf_folders, count.index)
-}
-
-output "all_grafana_folders_info" {
-  value = grafana_folder.folder_collection
-}
-
-output "deployed_grafana_folders" {
-  value = grafana_folder.folder_collection.*.title
-}
-
-locals {
-  folder_name            = "Monitoring-Infra"
-  grf_dashboards_counter = length(var.grf_dashboards)
-}
-
-resource "grafana_dashboard" "dashboard_in_folder" {
-
-  count = local.grf_dashboards_counter
-
-  folder      = element([for x in grafana_folder.folder_collection : x.id if x.title == keys(element(var.grf_dashboards, count.index))[0]], 0)
-  config_json = file(values(element(var.grf_dashboards, count.index))[0])
+  grf_url        = var.grf_url
+  grf_user       = var.grf_user
+  grf_password   = var.grf_password
+  grf_folders    = var.grf_folders
+  grf_dashboards = var.grf_dashboards
 
 }
-
-#replace(file("./dashboards/Docker overview-eport-external-sharing-1.json"), "+", "influxdb-metricstore")
-# Python and GO regex but not working as terraform using its own regex. 
-# "(?:\\\${)?DS_[A-Z0-9_-]+(?:})"
-
-# [for x in local.all_grafana_folders_info: x.id if x.title == local.folder_name ]

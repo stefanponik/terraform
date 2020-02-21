@@ -8,12 +8,12 @@ variable "grf_url" {
 
 variable "grf_user" {
   type    = string
-  default = "admin"
+  default = ""
 }
 
 variable "grf_password" {
   type    = string
-  default = "Password1"
+  default = ""
 }
 
 variable "grf_api_key" {
@@ -47,4 +47,6 @@ variable "grf_folders" {
 }
 
 variable "grf_dashboards" {
+  type = list(object({
+  }))
 }

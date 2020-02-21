@@ -47,10 +47,10 @@ grf_folders = [
 ]
 
 grf_dashboards = [
-  { Docker-Infra = "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json" },
-  { Docker-Infra = "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2.json" },
-  { Monitoring-Infra = "../../../../grafana-dashboards/docker-dashboards/Docker-overview-type-2.json" },
-  { Monitoring-Infra = "../../../../grafana-dashboards/docker-dashboards/InfluxDB-Docker-type-2.json" },
+  { Docker-Infra = "./dashboards/Docker-overview-type-1.json" },
+  { Docker-Infra = "./dashboards/InfluxDB-Docker-type-1.json" },
+  { Monitoring-Infra = "./dashboards/Docker-overview-type-1.json" },
+  { Monitoring-Infra = "./dashboards/InfluxDB-Docker-type-1.json" },
 ]
 
 
